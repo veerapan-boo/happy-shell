@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# mac-my-shell — bootstrap a smart zsh setup on a new machine.
+# happy-shell — bootstrap a smart zsh setup on a new machine.
 #
 # Works on macOS and Linux. Everything installs under $HOME (no Homebrew) —
 # the one exception is `zsh` itself on Linux, which needs `apt` since there's
