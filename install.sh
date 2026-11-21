@@ -78,8 +78,10 @@ elif [ "$OS" = "Linux" ]; then
     aarch64) NAVI_ASSET_ARCH="aarch64-unknown-linux-gnu" ;;
     *) echo "no prebuilt navi binary for arch $ARCH — install navi manually" >&2; exit 1 ;;
   esac
+  # sed reads the whole body: `grep -m1` closes the pipe early, and under `set -o pipefail` that turns
+  # curl's SIGPIPE into exit 23 on a container (measured on ubuntu-nab6lite, 2026-11-21).
   NAVI_VERSION="$(curl -fsSL https://api.github.com/repos/denisidoro/navi/releases/latest \
-    | grep -m1 '"tag_name"' | sed -E 's/.*"([^"]+)".*/\1/')"
+    | sed -n 's/.*"tag_name"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' | tr -d '\n')"
   log "downloading navi ${NAVI_VERSION} (${NAVI_ASSET_ARCH})"
   mkdir -p "$HOME/.local/bin"
   # the release tarball's member is "./navi", not "navi" -- don't pass a
