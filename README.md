@@ -1,4 +1,4 @@
-# mac-my-shell
+# happy-shell
 
 Personal zsh + terminal setup: smart autosuggestions, fuzzy Tab-completion, fuzzy history
 search, a custom `claude` CLI completion, `navi`'s cheat-sheet picker, and a themed WezTerm
@@ -11,8 +11,8 @@ terminal) and is skipped on Linux.
 ## Quick start
 
 ```bash
-git clone git@github.com:veerapan-boo/mac-my-shell.git
-cd mac-my-shell
+git clone git@github.com:veerapan-boo/happy-shell.git
+cd happy-shell
 ./install.sh
 ```
 
